@@ -25,7 +25,8 @@ const config = {
   port: 22140,
   database: 'defaultdb',
   ssl: {
-    rejectUnauthorized: false,
+    rejectUnauthorized: true,
+    ca: process.env.ssl,
   },
 };
 
