@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%- include('../partials/head'); %>
+			<style>
+				body {
+					background-color: #1d384f;
+				}
+
+				.quiz-container {
+					max-width: 600px;
+					margin: 50px auto;
+					padding: 20px;
+					background-color: #f8f9fa;
+					border-radius: 8px;
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				}
+
+				.score {
+					font-size: 1.2rem;
+					color: #6c757d;
+				}
+
+				.country {
+					font-size: 2rem;
+					margin-bottom: 20px;
+				}
+
+				.form-control {
+					margin-bottom: 10px;
+				}
+
+				.question-number {
+					font-size: 1rem;
+					color: #6c757d;
+					text-align: right;
+				}
+			</style>
+	</head>
+
+	<body>
+		<div class="quiz-container">
+			<h1 class="text-center">Capital Quiz</h1>
+			<p class="question-number">Question <%= questionNumber %> / <%= totalQuestions %>
+			</p>
+			<p class="score">Total Score: <%= score %>
+			</p>
+			<p class="country text-center">
+				<%= country %>
+			</p>
+
+			<form action="/" method="POST">
+				<div class="mb-3">
+					<input type="text" name="capital" class="form-control" placeholder="Enter the capital" required>
+				</div>
+				<button type="submit" class="btn btn-primary w-100">Submit</button>
+			</form>
+		</div>
+	</body>
+
+</html>

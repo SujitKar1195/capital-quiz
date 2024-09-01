@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%- include('../partials/head'); %>
+			<style>
+				body {
+					background-color: #1d384f;
+				}
+
+				.result-container {
+					max-width: 600px;
+					margin: 50px auto;
+					padding: 20px;
+					background-color: #f8f9fa;
+					border-radius: 8px;
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+					text-align: center;
+				}
+
+				.final-score {
+					font-size: 2rem;
+					margin-bottom: 20px;
+				}
+
+				.questions-list {
+					text-align: left;
+					margin-top: 20px;
+				}
+
+				.question-item {
+					margin-bottom: 15px;
+				}
+
+				.question-item p {
+					margin: 0;
+				}
+
+				.correct {
+					color: green;
+				}
+
+				.incorrect {
+					color: red;
+				}
+			</style>
+	</head>
+
+	<body>
+		<div class="result-container">
+			<h1>Quiz Completed!</h1>
+			<p class="final-score">Your Final Score: <%= score %>
+			</p>
+
+			<div class="questions-list">
+				<% questionsAndAnswers.forEach(function(qa, index) { %>
+					<div class="question-item">
+						<p><strong>Question <%= index + 1 %>: </strong> What is the capital of <%= qa.country %>?</p>
+						<p>Your Answer: <%= qa.userAnswer %>
+								<%- qa.userAnswer.toLowerCase()===qa.correctAnswer.toLowerCase()
+									? '<span class="correct">(Correct)</span>'
+									: '<span class="incorrect">(Incorrect)</span>' %>
+						</p>
+
+						<p>Correct Answer: <%= qa.correctAnswer %>
+						</p>
+					</div>
+					<% }) %>
+			</div>
+
+			<form action="/reset" method="POST">
+				<button type="submit" class="btn btn-success">Restart Quiz</button>
+			</form>
+		</div>
+	</body>
+
+</html>
