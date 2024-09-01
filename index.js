@@ -1,12 +1,14 @@
 const express = require('express');
+const path = require('path');
 require('dotenv').config();
 const url = require('url');
 const pg = require('pg');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 app.set('view engine', 'ejs');
+app.set('views', path.resolve('./views'));
+app.use(express.static(path.resolve('./')));
 app.use(express.urlencoded({extended: true}));
 
 let score = 0;
