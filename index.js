@@ -26,7 +26,6 @@ const config = {
   database: 'defaultdb',
   ssl: {
     rejectUnauthorized: false,
-    ca: process.env.ssl,
   },
 };
 
