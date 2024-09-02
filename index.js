@@ -42,7 +42,6 @@ db.connect((err) => {
       console.log('Error in executing query.');
     } else {
       allData = res.rows;
-      generateRandomCountry();
     }
   });
 });
@@ -55,6 +54,7 @@ function generateRandomCountry() {
 
 // Render the index page
 app.get('/', function (req, res) {
+  generateRandomCountry();
   if (questionNumber > totalQuestions) {
     res.render('pages/result', {
       score: score,
